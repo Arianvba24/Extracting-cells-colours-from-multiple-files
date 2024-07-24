@@ -7,8 +7,6 @@
 # White = "Not reviewed"
 
 # ----------------------------------------------------------------------------
-
-
 # Colour values:
 #Verde: FF92D050
 #Rojo: FFFF0000
@@ -18,6 +16,8 @@
 import os
 
 files = os.listdir(r"C:\Users\Cash\Documents\pruebas_python\proyectos\excel")
+
+# files = os.listdir("./excel_files")
 
 colours = {"FF92D050": "Sold", "FFFF0000": "Loss", "FFFFFF00": "Damaged", "FFFFFFFF" : "Not reviewed"}
 import openpyxl
@@ -51,8 +51,10 @@ df = pd.DataFrame()
 
 for file in files:
     file_path = fr"C:\Users\Cash\Documents\pruebas_python\proyectos\excel/{file}"
+    # file_path = fr".\excel_files/{file}"
     df_x = pd.read_excel(file_path, usecols="A:E")
     df = pd.concat([df,df_x], ignore_index = True)
     
+df.to_excel(r"C:\Users\Cash\Proyectos\Excel\dataframe.xlsx",index=False)
 print(df)
 
